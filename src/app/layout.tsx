@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Anton } from "next/font/google";
+import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const anton = Anton({
+const poppins = Poppins({
   variable: "--font-display",
-  weight: "400",
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
 });
 
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-neutral-900">
         <CartProvider>

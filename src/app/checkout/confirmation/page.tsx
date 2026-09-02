@@ -6,7 +6,7 @@ export default function ConfirmationPage() {
       <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-3xl text-green-600">
         ✓
       </div>
-      <h1 className="text-3xl font-bold tracking-tight">Order Placed!</h1>
+      <h1 className="font-display text-3xl font-bold tracking-tight">Order Placed!</h1>
       <p className="mt-4 text-neutral-500">
         Thank you for your order. This is a demo store, so no real charge was
         made and no email will be sent — but in a live store, a confirmation

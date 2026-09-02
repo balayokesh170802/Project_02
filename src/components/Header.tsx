@@ -75,7 +75,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-[#f5f1ea] text-neutral-900">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-xl font-extrabold tracking-tight">
+        <Link href="/" className="font-display text-xl font-extrabold tracking-tight">
           MASTER
         </Link>
 

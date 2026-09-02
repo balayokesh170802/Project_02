@@ -25,7 +25,7 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold tracking-tight">Nothing to Checkout</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight">Nothing to Checkout</h1>
         <p className="mt-4 text-neutral-500">Your cart is empty.</p>
         <Link
           href="/products"
@@ -39,7 +39,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="mb-8 text-3xl font-bold tracking-tight">Checkout</h1>
+      <h1 className="mb-8 font-display text-3xl font-bold tracking-tight">Checkout</h1>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
         <form onSubmit={handleSubmit} className="space-y-8 lg:col-span-2">

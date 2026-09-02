@@ -38,7 +38,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="mx-auto max-w-3xl px-4 text-center"
+        className="mx-auto max-w-4xl px-4 text-center"
       >
         <motion.p
           variants={item}
@@ -48,22 +48,22 @@ export default function Hero() {
         </motion.p>
         <motion.h1
           variants={item}
-          className="font-display text-5xl uppercase leading-[0.95] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl"
+          className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl"
         >
-          Elevate Your Look
+          Level Up Your Look
           <br />
-          With Timeless Craft.
+          With Fearless Fashion.
         </motion.h1>
         <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-neutral-600">
-          Clean cuts. Quality fabric. Effortless style — pieces built to blend
-          seamlessly into your everyday.
+          Clean lines. Neutral tones. Effortless design — pieces made to
+          blend seamlessly into your everyday.
         </motion.p>
         <motion.div variants={item} className="mt-8">
           <Link
             href="/products"
             className="inline-block rounded-full bg-neutral-900 px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-neutral-700"
           >
-            Shop It Now
+            Style It Now
           </Link>
         </motion.div>
       </motion.div>
