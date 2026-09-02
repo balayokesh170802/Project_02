@@ -33,7 +33,11 @@ export default function Hero() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
-    <section className="bg-[#f5f1ea] pb-10 pt-12 sm:pt-14">
+    <section className="relative isolate overflow-hidden bg-[#f5f1ea] pb-10 pt-12 sm:pt-14">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgba(23,23,23,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(23,23,23,0.06)_1px,transparent_1px)] [background-size:12.5%_16.66%]"
+      />
       <motion.div
         variants={container}
         initial="hidden"
