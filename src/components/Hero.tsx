@@ -40,9 +40,8 @@ export default function Hero() {
       />
 
       <div className="pointer-events-none absolute left-6 top-24 hidden text-left lg:block xl:left-10">
-        <p className="text-sm font-semibold tracking-wide text-neutral-900">01 / 05</p>
-        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
-          New Collection
+        <p className="text-sm font-semibold uppercase tracking-wide text-neutral-900">
+          Made for Everyday
         </p>
         <span className="mt-2 block h-px w-6 bg-neutral-400" />
       </div>
