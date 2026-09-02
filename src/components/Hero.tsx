@@ -25,7 +25,7 @@ const gallerySlugs = [
   "classic-analog-watch",
 ];
 
-const heights = ["h-56", "h-72", "h-[22rem]", "h-72", "h-56"];
+const heights = ["h-72", "h-[24rem]", "h-[29rem]", "h-[24rem]", "h-72"];
 
 export default function Hero() {
   const gallery = gallerySlugs
@@ -33,12 +33,12 @@ export default function Hero() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
-    <section className="bg-[#f5f1ea] pb-16 pt-16 sm:pt-20">
+    <section className="bg-[#f5f1ea] pb-10 pt-12 sm:pt-14">
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="mx-auto max-w-4xl px-4 text-center"
+        className="mx-auto max-w-5xl px-4 text-center"
       >
         <motion.p
           variants={item}
@@ -54,11 +54,10 @@ export default function Hero() {
           <br />
           With Fearless Fashion.
         </motion.h1>
-        <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-neutral-600">
-          Clean lines. Neutral tones. Effortless design — pieces made to
-          blend seamlessly into your everyday.
+        <motion.p variants={item} className="mt-4 text-sm text-neutral-600 sm:text-base sm:whitespace-nowrap">
+          Clean lines. Neutral tones. Effortless design — pieces made to blend seamlessly into your everyday.
         </motion.p>
-        <motion.div variants={item} className="mt-8">
+        <motion.div variants={item} className="mt-6">
           <Link
             href="/products"
             className="inline-block rounded-full bg-neutral-900 px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-neutral-700"
@@ -72,7 +71,7 @@ export default function Hero() {
         initial="hidden"
         animate="show"
         variants={container}
-        className="mx-auto mt-16 flex max-w-6xl items-end justify-center gap-3 px-4 sm:gap-5"
+        className="mx-auto mt-10 flex max-w-6xl items-end justify-center gap-3 px-4 sm:gap-5"
       >
         {gallery.map((p, i) => (
           <motion.div key={p.slug} variants={item} className={`w-1/5 ${heights[i]}`}>
