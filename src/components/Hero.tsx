@@ -38,6 +38,43 @@ export default function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgba(23,23,23,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(23,23,23,0.06)_1px,transparent_1px)] [background-size:12.5%_16.66%]"
       />
+
+      <div className="pointer-events-none absolute left-6 top-24 hidden text-left lg:block xl:left-10">
+        <p className="text-sm font-semibold tracking-wide text-neutral-900">01 / 05</p>
+        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
+          New Collection
+        </p>
+        <span className="mt-2 block h-px w-6 bg-neutral-400" />
+      </div>
+
+      <div className="pointer-events-none absolute right-6 top-24 hidden text-right lg:block xl:right-10">
+        <p className="text-sm font-semibold tracking-wide text-neutral-900">Spring / Summer</p>
+        <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
+          2026
+        </p>
+        <span className="ml-auto mt-2 block h-px w-6 bg-neutral-400" />
+      </div>
+
+      <div className="pointer-events-none absolute bottom-16 left-6 hidden flex-col items-center gap-3 lg:flex xl:left-10">
+        <span className="block h-10 w-px bg-neutral-400" />
+        <span className="[writing-mode:vertical-rl] rotate-180 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
+          Explore Collection
+        </span>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-16 right-6 hidden flex-col items-center gap-2 lg:flex xl:right-10">
+        <span className="[writing-mode:vertical-rl] rotate-180 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500">
+          Scroll to Explore
+        </span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          className="text-neutral-500"
+        >
+          ↓
+        </motion.span>
+      </div>
+
       <motion.div
         variants={container}
         initial="hidden"
