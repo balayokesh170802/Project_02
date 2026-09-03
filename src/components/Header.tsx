@@ -155,7 +155,7 @@ export default function Header() {
             type="button"
             aria-label="Menu"
             onClick={() => setMenuOpen((o) => !o)}
-            className={styles.iconButton}
+            className={styles.menuButton}
           >
             <MenuIcon className={styles.icon} />
           </button>

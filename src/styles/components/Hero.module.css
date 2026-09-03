@@ -82,7 +82,7 @@
 }
 
 .gallery {
-  @apply mx-auto mt-10 flex max-w-6xl items-end justify-center gap-3 px-4 sm:gap-5;
+  @apply mx-auto mt-6 hidden max-w-6xl items-end justify-center gap-2 px-4 md:flex md:mt-8 md:gap-3 lg:mt-10 lg:gap-5;
 }
 
 .galleryItem {
@@ -90,15 +90,15 @@
 }
 
 .heightSm {
-  @apply h-72;
+  @apply h-44 lg:h-72;
 }
 
 .heightMd {
-  @apply h-[24rem];
+  @apply h-60 lg:h-[24rem];
 }
 
 .heightLg {
-  @apply h-[29rem];
+  @apply h-72 lg:h-[29rem];
 }
 
 .galleryLink {
@@ -107,4 +107,22 @@
 
 .galleryImage {
   @apply object-cover transition-transform duration-500 group-hover:scale-105;
+}
+
+.carousel {
+  @apply mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2 md:hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselItem {
+  @apply relative aspect-[4/5] w-[85%] flex-shrink-0 snap-center overflow-hidden rounded-2xl bg-neutral-200;
+}
+
+.carouselImage {
+  @apply object-cover;
 }

@@ -109,6 +109,25 @@ export default function Hero() {
           </motion.div>
         ))}
       </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className={styles.carousel}
+      >
+        {gallery.map((p) => (
+          <Link key={p.slug} href={`/products/${p.slug}`} className={styles.carouselItem}>
+            <Image
+              src={p.image}
+              alt={p.name}
+              fill
+              sizes="85vw"
+              className={styles.carouselImage}
+            />
+          </Link>
+        ))}
+      </motion.div>
     </section>
   );
 }

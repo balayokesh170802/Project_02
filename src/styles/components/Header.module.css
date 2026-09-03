@@ -42,11 +42,15 @@
 }
 
 .icons {
-  @apply flex items-center gap-5;
+  @apply flex items-center gap-3 sm:gap-5;
 }
 
 .iconButton {
   @apply hover:text-neutral-600;
+}
+
+.menuButton {
+  @apply hover:text-neutral-600 md:hidden;
 }
 
 .iconLink {
@@ -78,7 +82,7 @@
 }
 
 .mobilePanel {
-  @apply overflow-hidden border-t border-neutral-200;
+  @apply overflow-hidden border-t border-neutral-200 md:hidden;
 }
 
 .mobileList {
