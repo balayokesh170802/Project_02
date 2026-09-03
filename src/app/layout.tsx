@@ -3,7 +3,6 @@ import { Inter, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import styles from "@/styles/pages/layout.module.css";
 
 const inter = Inter({
@@ -38,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CartProvider>
           <Header />
           <main className={styles.main}>{children}</main>
-          <Footer />
         </CartProvider>
       </body>
     </html>
