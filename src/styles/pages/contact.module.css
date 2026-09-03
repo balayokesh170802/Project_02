@@ -1,0 +1,34 @@
+@reference "../../app/globals.css";
+
+.wrap {
+  @apply mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8;
+}
+
+.eyebrow {
+  @apply mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-neutral-400;
+}
+
+.heading {
+  @apply text-4xl tracking-tight sm:text-5xl;
+  font-family: var(--font-display);
+}
+
+.text {
+  @apply mt-4 text-neutral-600;
+}
+
+.success {
+  @apply mt-10 text-sm font-medium text-neutral-900;
+}
+
+.form {
+  @apply mt-10 space-y-4;
+}
+
+.field {
+  @apply w-full border border-neutral-300 px-3 py-2.5 text-sm;
+}
+
+.submit {
+  @apply bg-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-neutral-700;
+}

@@ -1,0 +1,110 @@
+@reference "../../app/globals.css";
+
+.section {
+  @apply relative isolate overflow-hidden bg-[#f5f1ea] pb-10 pt-12 sm:pt-14;
+}
+
+.grid {
+  @apply pointer-events-none absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgba(23,23,23,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(23,23,23,0.06)_1px,transparent_1px)] [background-size:12.5%_16.66%];
+}
+
+.labelTopLeft {
+  @apply pointer-events-none absolute left-6 top-24 hidden text-left lg:block xl:left-10;
+}
+
+.labelTitle {
+  @apply text-sm font-semibold uppercase tracking-wide text-neutral-900;
+}
+
+.dash {
+  @apply mt-2 block h-px w-6 bg-neutral-400;
+}
+
+.dashRight {
+  @apply ml-auto mt-2 block h-px w-6 bg-neutral-400;
+}
+
+.labelTopRight {
+  @apply pointer-events-none absolute right-6 top-24 hidden text-right lg:block xl:right-10;
+}
+
+.labelTopRightTitle {
+  @apply text-sm font-semibold tracking-wide text-neutral-900;
+}
+
+.labelTopRightSub {
+  @apply mt-1 text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500;
+}
+
+.sideLeft {
+  @apply pointer-events-none absolute bottom-16 left-6 hidden flex-col items-center gap-3 lg:flex xl:left-10;
+}
+
+.sideRight {
+  @apply pointer-events-none absolute bottom-16 right-6 hidden flex-col items-center gap-2 lg:flex xl:right-10;
+}
+
+.sideLine {
+  @apply block h-10 w-px bg-neutral-400;
+}
+
+.verticalLabel {
+  @apply [writing-mode:vertical-rl] rotate-180 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.2em] text-neutral-500;
+}
+
+.arrow {
+  @apply text-neutral-500;
+}
+
+.textWrap {
+  @apply mx-auto max-w-5xl px-4 text-center;
+}
+
+.eyebrow {
+  @apply mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-neutral-500;
+}
+
+.heading {
+  @apply text-4xl font-extrabold leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl;
+  font-family: var(--font-display);
+}
+
+.subtext {
+  @apply mt-4 text-sm text-neutral-600 sm:text-base sm:whitespace-nowrap;
+}
+
+.ctaWrap {
+  @apply mt-6;
+}
+
+.cta {
+  @apply inline-block rounded-full bg-neutral-900 px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-neutral-700;
+}
+
+.gallery {
+  @apply mx-auto mt-10 flex max-w-6xl items-end justify-center gap-3 px-4 sm:gap-5;
+}
+
+.galleryItem {
+  @apply w-1/5;
+}
+
+.heightSm {
+  @apply h-72;
+}
+
+.heightMd {
+  @apply h-[24rem];
+}
+
+.heightLg {
+  @apply h-[29rem];
+}
+
+.galleryLink {
+  @apply relative block h-full w-full overflow-hidden rounded-t-2xl bg-neutral-200;
+}
+
+.galleryImage {
+  @apply object-cover transition-transform duration-500 group-hover:scale-105;
+}

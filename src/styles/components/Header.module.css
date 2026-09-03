@@ -1,0 +1,94 @@
+@reference "../../app/globals.css";
+
+.header {
+  @apply sticky top-0 z-50 border-b border-neutral-200 bg-[#f5f1ea] text-neutral-900;
+}
+
+.bar {
+  @apply mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8;
+}
+
+.logo {
+  @apply text-xl font-extrabold tracking-tight;
+  font-family: var(--font-display);
+}
+
+.nav {
+  @apply hidden items-center gap-8 text-sm font-medium md:flex;
+}
+
+.navLink {
+  @apply relative pb-0.5 transition-colors hover:text-neutral-600;
+}
+
+.navLinkActive {
+  @apply underline underline-offset-4;
+}
+
+.collectionsWrap {
+  @apply relative;
+}
+
+.collectionsLink {
+  @apply pb-0.5 transition-colors hover:text-neutral-600;
+}
+
+.collectionsPanel {
+  @apply absolute left-1/2 top-full z-10 mt-2 w-48 -translate-x-1/2 border border-neutral-200 bg-white py-2 shadow-lg;
+}
+
+.collectionsItem {
+  @apply block px-4 py-2 text-sm hover:bg-neutral-50;
+}
+
+.icons {
+  @apply flex items-center gap-5;
+}
+
+.iconButton {
+  @apply hover:text-neutral-600;
+}
+
+.iconLink {
+  @apply hover:text-neutral-600;
+}
+
+.cartLink {
+  @apply relative hover:text-neutral-600;
+}
+
+.cartBadge {
+  @apply absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-900 text-[10px] font-bold text-white;
+}
+
+.icon {
+  @apply h-5 w-5;
+}
+
+.searchPanel {
+  @apply overflow-hidden border-t border-neutral-200;
+}
+
+.searchForm {
+  @apply mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8;
+}
+
+.searchInput {
+  @apply w-full border-b border-neutral-400 bg-transparent py-2 text-lg outline-none placeholder:text-neutral-400;
+}
+
+.mobilePanel {
+  @apply overflow-hidden border-t border-neutral-200;
+}
+
+.mobileList {
+  @apply mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm font-medium sm:px-6 lg:px-8;
+}
+
+.mobileLink {
+  @apply py-2;
+}
+
+.mobileHeading {
+  @apply mt-2 pt-2 text-xs font-semibold uppercase tracking-wide text-neutral-400;
+}

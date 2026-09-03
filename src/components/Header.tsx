@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { categories } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
+import styles from "@/styles/components/Header.module.css";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -73,30 +74,28 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-[#f5f1ea] text-neutral-900">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="font-display text-xl font-extrabold tracking-tight">
+    <header className={styles.header}>
+      <div className={styles.bar}>
+        <Link href="/" className={styles.logo}>
           MASTER
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
+        <nav className={styles.nav}>
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`relative pb-0.5 transition-colors hover:text-neutral-600 ${
-                pathname === l.href ? "underline underline-offset-4" : ""
-              }`}
+              className={`${styles.navLink} ${pathname === l.href ? styles.navLinkActive : ""}`}
             >
               {l.label}
             </Link>
           ))}
           <div
-            className="relative"
+            className={styles.collectionsWrap}
             onMouseEnter={() => setCollectionsOpen(true)}
             onMouseLeave={() => setCollectionsOpen(false)}
           >
-            <Link href="/products" className="pb-0.5 transition-colors hover:text-neutral-600">
+            <Link href="/products" className={styles.collectionsLink}>
               Collections
             </Link>
             <AnimatePresence>
@@ -106,13 +105,13 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-1/2 top-full z-10 mt-2 w-48 -translate-x-1/2 border border-neutral-200 bg-white py-2 shadow-lg"
+                  className={styles.collectionsPanel}
                 >
                   {categories.map((c) => (
                     <Link
                       key={c.slug}
                       href={`/products/category/${c.slug}`}
-                      className="block px-4 py-2 text-sm hover:bg-neutral-50"
+                      className={styles.collectionsItem}
                     >
                       {c.label}
                     </Link>
@@ -123,20 +122,20 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="flex items-center gap-5">
+        <div className={styles.icons}>
           <button
             type="button"
             aria-label="Search"
             onClick={() => setSearchOpen((o) => !o)}
-            className="hover:text-neutral-600"
+            className={styles.iconButton}
           >
-            <SearchIcon className="h-5 w-5" />
+            <SearchIcon className={styles.icon} />
           </button>
-          <Link href="/account" aria-label="Account" className="hover:text-neutral-600">
-            <UserIcon className="h-5 w-5" />
+          <Link href="/account" aria-label="Account" className={styles.iconLink}>
+            <UserIcon className={styles.icon} />
           </Link>
-          <Link href="/cart" aria-label="Cart" className="relative hover:text-neutral-600">
-            <BagIcon className="h-5 w-5" />
+          <Link href="/cart" aria-label="Cart" className={styles.cartLink}>
+            <BagIcon className={styles.icon} />
             <AnimatePresence>
               {itemCount > 0 && (
                 <motion.span
@@ -145,7 +144,7 @@ export default function Header() {
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
                   transition={{ type: "spring", stiffness: 500, damping: 20 }}
-                  className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-neutral-900 text-[10px] font-bold text-white"
+                  className={styles.cartBadge}
                 >
                   {itemCount}
                 </motion.span>
@@ -156,9 +155,9 @@ export default function Header() {
             type="button"
             aria-label="Menu"
             onClick={() => setMenuOpen((o) => !o)}
-            className="hover:text-neutral-600"
+            className={styles.iconButton}
           >
-            <MenuIcon className="h-5 w-5" />
+            <MenuIcon className={styles.icon} />
           </button>
         </div>
       </div>
@@ -170,15 +169,15 @@ export default function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-neutral-200"
+            className={styles.searchPanel}
           >
-            <form onSubmit={submitSearch} className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+            <form onSubmit={submitSearch} className={styles.searchForm}>
               <input
                 ref={searchInputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search products..."
-                className="w-full border-b border-neutral-400 bg-transparent py-2 text-lg outline-none placeholder:text-neutral-400"
+                className={styles.searchInput}
               />
             </form>
           </motion.div>
@@ -192,22 +191,20 @@ export default function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-neutral-200"
+            className={styles.mobilePanel}
           >
-            <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm font-medium sm:px-6 lg:px-8">
+            <div className={styles.mobileList}>
               {navLinks.map((l) => (
-                <Link key={l.href} href={l.href} className="py-2" onClick={() => setMenuOpen(false)}>
+                <Link key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
                   {l.label}
                 </Link>
               ))}
-              <p className="mt-2 pt-2 text-xs font-semibold uppercase tracking-wide text-neutral-400">
-                Collections
-              </p>
+              <p className={styles.mobileHeading}>Collections</p>
               {categories.map((c) => (
                 <Link
                   key={c.slug}
                   href={`/products/category/${c.slug}`}
-                  className="py-2"
+                  className={styles.mobileLink}
                   onClick={() => setMenuOpen(false)}
                 >
                   {c.label}

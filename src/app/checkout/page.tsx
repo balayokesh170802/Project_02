@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import styles from "@/styles/pages/checkout.module.css";
 
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCart();
@@ -24,13 +25,10 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h1 className="font-display text-3xl font-bold tracking-tight">Nothing to Checkout</h1>
-        <p className="mt-4 text-neutral-500">Your cart is empty.</p>
-        <Link
-          href="/products"
-          className="mt-8 inline-block bg-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-neutral-700"
-        >
+      <div className={styles.emptyWrap}>
+        <h1 className={styles.emptyHeading}>Nothing to Checkout</h1>
+        <p className={styles.emptyText}>Your cart is empty.</p>
+        <Link href="/products" className={styles.emptyCta}>
           Shop Now
         </Link>
       </div>
@@ -38,65 +36,63 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="mb-8 font-display text-3xl font-bold tracking-tight">Checkout</h1>
+    <div className={styles.wrap}>
+      <h1 className={styles.heading}>Checkout</h1>
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
-        <form onSubmit={handleSubmit} className="space-y-8 lg:col-span-2">
+      <div className={styles.layout}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <section>
-            <h2 className="mb-4 text-lg font-semibold">Shipping Address</h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input required placeholder="Full Name" className="border border-neutral-300 px-3 py-2 text-sm sm:col-span-2" />
-              <input required type="email" placeholder="Email" className="border border-neutral-300 px-3 py-2 text-sm sm:col-span-2" />
-              <input required placeholder="Address" className="border border-neutral-300 px-3 py-2 text-sm sm:col-span-2" />
-              <input required placeholder="City" className="border border-neutral-300 px-3 py-2 text-sm" />
-              <input required placeholder="Postal Code" className="border border-neutral-300 px-3 py-2 text-sm" />
-              <input required placeholder="Country" className="border border-neutral-300 px-3 py-2 text-sm sm:col-span-2" />
+            <h2 className={styles.sectionTitle}>Shipping Address</h2>
+            <div className={styles.fieldGrid}>
+              <input required placeholder="Full Name" className={styles.field} />
+              <input required type="email" placeholder="Email" className={styles.field} />
+              <input required placeholder="Address" className={styles.field} />
+              <input required placeholder="City" className={styles.fieldHalf} />
+              <input required placeholder="Postal Code" className={styles.fieldHalf} />
+              <input required placeholder="Country" className={styles.field} />
             </div>
           </section>
 
           <section>
-            <h2 className="mb-4 text-lg font-semibold">Payment</h2>
-            <p className="mb-4 text-sm text-neutral-500">
+            <h2 className={styles.sectionTitle}>Payment</h2>
+            <p className={styles.demoNote}>
               This is a demo checkout — no real payment is processed.
             </p>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input required placeholder="Card Number" className="border border-neutral-300 px-3 py-2 text-sm sm:col-span-2" />
-              <input required placeholder="MM/YY" className="border border-neutral-300 px-3 py-2 text-sm" />
-              <input required placeholder="CVC" className="border border-neutral-300 px-3 py-2 text-sm" />
+            <div className={styles.fieldGrid}>
+              <input required placeholder="Card Number" className={styles.field} />
+              <input required placeholder="MM/YY" className={styles.fieldHalf} />
+              <input required placeholder="CVC" className={styles.fieldHalf} />
             </div>
           </section>
 
-          <button
-            type="submit"
-            disabled={placing}
-            className="w-full bg-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-neutral-700 disabled:opacity-60"
-          >
+          <button type="submit" disabled={placing} className={styles.submitButton}>
             {placing ? "Placing Order..." : `Place Order — $${total.toFixed(2)}`}
           </button>
         </form>
 
-        <div className="h-fit border border-neutral-200 p-6">
-          <h2 className="text-lg font-semibold">Order Summary</h2>
-          <ul className="mt-4 space-y-2 text-sm">
+        <div className={styles.summary}>
+          <h2 className={styles.summaryTitle}>Order Summary</h2>
+          <ul className={styles.summaryList}>
             {items.map((item) => (
-              <li key={`${item.slug}-${item.size}-${item.color}`} className="flex justify-between">
-                <span className="text-neutral-600">
+              <li key={`${item.slug}-${item.size}-${item.color}`} className={styles.summaryListItem}>
+                <span className={styles.summaryItemLabel}>
                   {item.name} ({item.size}/{item.color}) × {item.quantity}
                 </span>
-                <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                <span className={styles.summaryItemValue}>
+                  ${(item.price * item.quantity).toFixed(2)}
+                </span>
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex justify-between border-t border-neutral-200 pt-4 text-sm">
-            <span className="text-neutral-500">Subtotal</span>
-            <span className="font-medium">${subtotal.toFixed(2)}</span>
+          <div className={styles.summaryRow}>
+            <span className={styles.summaryLabel}>Subtotal</span>
+            <span className={styles.summaryValue}>${subtotal.toFixed(2)}</span>
           </div>
-          <div className="mt-2 flex justify-between text-sm">
-            <span className="text-neutral-500">Shipping</span>
-            <span className="font-medium">${shipping.toFixed(2)}</span>
+          <div className={styles.summaryRowTight}>
+            <span className={styles.summaryLabel}>Shipping</span>
+            <span className={styles.summaryValue}>${shipping.toFixed(2)}</span>
           </div>
-          <div className="mt-4 flex justify-between border-t border-neutral-200 pt-4 text-base font-semibold">
+          <div className={styles.summaryTotal}>
             <span>Total</span>
             <span>${total.toFixed(2)}</span>
           </div>

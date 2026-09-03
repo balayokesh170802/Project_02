@@ -1,0 +1,14 @@
+@reference "../../app/globals.css";
+
+.wrap {
+  @apply mx-auto max-w-md px-4 py-24 text-center sm:px-6 lg:px-8;
+}
+
+.heading {
+  @apply text-3xl tracking-tight;
+  font-family: var(--font-display);
+}
+
+.text {
+  @apply mt-4 text-neutral-500;
+}

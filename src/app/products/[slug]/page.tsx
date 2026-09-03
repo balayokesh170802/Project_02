@@ -4,6 +4,7 @@ import AddToCart from "@/components/AddToCart";
 import ProductGallery from "@/components/ProductGallery";
 import Reveal from "@/components/Reveal";
 import { getProductBySlug, getRelatedProducts, products } from "@/lib/products";
+import styles from "@/styles/pages/product-detail.module.css";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -31,36 +32,34 @@ export default async function ProductPage({
   const related = getRelatedProducts(product);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+    <div className={styles.wrap}>
+      <div className={styles.grid}>
         <Reveal>
           <ProductGallery images={product.images} name={product.name} />
         </Reveal>
 
         <Reveal delay={0.15}>
-          <h1 className="font-display text-3xl font-bold tracking-tight">{product.name}</h1>
-          <div className="mt-2 flex items-center gap-3">
-            <span className="text-xl font-semibold">${product.price.toFixed(2)}</span>
+          <h1 className={styles.name}>{product.name}</h1>
+          <div className={styles.priceRow}>
+            <span className={styles.price}>${product.price.toFixed(2)}</span>
             {product.compareAtPrice && (
-              <span className="text-lg text-neutral-400 line-through">
-                ${product.compareAtPrice.toFixed(2)}
-              </span>
+              <span className={styles.comparePrice}>${product.compareAtPrice.toFixed(2)}</span>
             )}
           </div>
-          <p className="mt-4 text-neutral-600">{product.description}</p>
+          <p className={styles.description}>{product.description}</p>
 
-          <div className="mt-8">
+          <div className={styles.addToCartWrap}>
             <AddToCart product={product} />
           </div>
         </Reveal>
       </div>
 
       {related.length > 0 && (
-        <div className="mt-20">
+        <div className={styles.related}>
           <Reveal>
-            <h2 className="mb-8 font-display text-2xl font-bold tracking-tight">You May Also Like</h2>
+            <h2 className={styles.relatedHeading}>You May Also Like</h2>
           </Reveal>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+          <div className={styles.relatedGrid}>
             {related.map((p) => (
               <ProductCard key={p.slug} product={p} />
             ))}

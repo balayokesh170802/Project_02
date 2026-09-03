@@ -1,25 +1,24 @@
 import Link from "next/link";
 import { categories } from "@/lib/products";
+import styles from "@/styles/components/Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-800 bg-black text-neutral-300">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6 lg:px-8">
+    <footer className={styles.footer}>
+      <div className={styles.grid}>
         <div>
-          <h3 className="mb-3 font-display text-lg font-bold tracking-widest text-white">MASTER</h3>
-          <p className="text-sm text-neutral-400">
+          <h3 className={styles.brandTitle}>MASTER</h3>
+          <p className={styles.brandText}>
             Modern menswear essentials, built to last. Shirts, outerwear, footwear
             and accessories for every day.
           </p>
         </div>
         <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-white">
-            Shop
-          </h4>
-          <ul className="space-y-2 text-sm">
+          <h4 className={styles.heading}>Shop</h4>
+          <ul className={styles.list}>
             {categories.map((c) => (
               <li key={c.slug}>
-                <Link href={`/products/category/${c.slug}`} className="hover:text-white">
+                <Link href={`/products/category/${c.slug}`} className={styles.link}>
                   {c.label}
                 </Link>
               </li>
@@ -27,24 +26,22 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-white">
-            Help
-          </h4>
-          <ul className="space-y-2 text-sm">
+          <h4 className={styles.heading}>Help</h4>
+          <ul className={styles.list}>
             <li>
-              <Link href="/cart" className="hover:text-white">
+              <Link href="/cart" className={styles.link}>
                 Your Cart
               </Link>
             </li>
             <li>
-              <Link href="/products" className="hover:text-white">
+              <Link href="/products" className={styles.link}>
                 All Products
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500">
+      <div className={styles.bottom}>
         © {new Date().getFullYear()} MASTER Menswear. All rights reserved.
       </div>
     </footer>

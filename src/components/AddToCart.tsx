@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
 import type { Product } from "@/lib/products";
+import styles from "@/styles/components/AddToCart.module.css";
 
 export default function AddToCart({ product }: { product: Product }) {
   const { addItem } = useCart();
@@ -20,21 +21,17 @@ export default function AddToCart({ product }: { product: Product }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className={styles.wrap}>
       <div>
-        <label className="mb-2 block text-sm font-semibold uppercase tracking-wide">
-          Size
-        </label>
-        <div className="flex flex-wrap gap-2">
+        <label className={styles.label}>Size</label>
+        <div className={styles.optionRow}>
           {product.sizes.map((s) => (
             <button
               key={s}
               type="button"
               onClick={() => setSize(s)}
-              className={`min-w-[3rem] border px-3 py-2 text-sm font-medium transition-colors ${
-                size === s
-                  ? "border-neutral-900 bg-neutral-900 text-white"
-                  : "border-neutral-300 text-neutral-700 hover:border-neutral-900"
+              className={`${styles.optionButton} ${
+                size === s ? styles.optionButtonActive : styles.optionButtonInactive
               }`}
             >
               {s}
@@ -44,19 +41,15 @@ export default function AddToCart({ product }: { product: Product }) {
       </div>
 
       <div>
-        <label className="mb-2 block text-sm font-semibold uppercase tracking-wide">
-          Color
-        </label>
-        <div className="flex flex-wrap gap-2">
+        <label className={styles.label}>Color</label>
+        <div className={styles.optionRow}>
           {product.colors.map((c) => (
             <button
               key={c}
               type="button"
               onClick={() => setColor(c)}
-              className={`border px-3 py-2 text-sm font-medium transition-colors ${
-                color === c
-                  ? "border-neutral-900 bg-neutral-900 text-white"
-                  : "border-neutral-300 text-neutral-700 hover:border-neutral-900"
+              className={`${styles.optionButton} ${
+                color === c ? styles.optionButtonActive : styles.optionButtonInactive
               }`}
             >
               {c}
@@ -66,22 +59,20 @@ export default function AddToCart({ product }: { product: Product }) {
       </div>
 
       <div>
-        <label className="mb-2 block text-sm font-semibold uppercase tracking-wide">
-          Quantity
-        </label>
-        <div className="flex w-fit items-center border border-neutral-300">
+        <label className={styles.label}>Quantity</label>
+        <div className={styles.quantityRow}>
           <button
             type="button"
-            className="px-3 py-2 text-lg"
+            className={styles.quantityButton}
             onClick={() => setQuantity((q) => Math.max(1, q - 1))}
             aria-label="Decrease quantity"
           >
             −
           </button>
-          <span className="w-10 text-center text-sm font-medium">{quantity}</span>
+          <span className={styles.quantityValue}>{quantity}</span>
           <button
             type="button"
-            className="px-3 py-2 text-lg"
+            className={styles.quantityButton}
             onClick={() => setQuantity((q) => q + 1)}
             aria-label="Increase quantity"
           >
@@ -90,12 +81,8 @@ export default function AddToCart({ product }: { product: Product }) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <button
-          type="button"
-          onClick={handleAdd}
-          className="flex-1 bg-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-neutral-700"
-        >
+      <div className={styles.actions}>
+        <button type="button" onClick={handleAdd} className={styles.addButton}>
           {added ? "Added ✓" : "Add to Cart"}
         </button>
         <button
@@ -104,7 +91,7 @@ export default function AddToCart({ product }: { product: Product }) {
             addItem(product, size, color, quantity);
             router.push("/cart");
           }}
-          className="flex-1 border border-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-neutral-900 transition-colors hover:bg-neutral-100"
+          className={styles.buyButton}
         >
           Buy Now
         </button>

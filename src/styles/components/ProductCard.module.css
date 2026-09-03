@@ -1,0 +1,73 @@
+@reference "../../app/globals.css";
+
+.link {
+  @apply block;
+}
+
+.imageWrap {
+  @apply relative aspect-[4/5] w-full overflow-hidden bg-neutral-100;
+}
+
+.image {
+  @apply object-cover transition-transform duration-700 ease-out group-hover:scale-110;
+}
+
+.overlay {
+  @apply pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100;
+}
+
+.badges {
+  @apply absolute left-2 top-2 flex gap-2;
+}
+
+.badgeNew {
+  @apply bg-black px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white;
+}
+
+.badgeSale {
+  @apply bg-red-600 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white;
+}
+
+.quickAdd {
+  @apply absolute inset-x-2 bottom-2 translate-y-4 bg-white/95 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-neutral-900 opacity-0 backdrop-blur transition-all duration-300 hover:bg-white group-hover:translate-y-0 group-hover:opacity-100;
+}
+
+.info {
+  @apply mt-3;
+}
+
+.name {
+  @apply text-sm font-medium text-neutral-900;
+}
+
+.ratingRow {
+  @apply mt-1 flex items-center gap-1.5;
+}
+
+.reviewCount {
+  @apply text-xs text-neutral-400;
+}
+
+.priceRow {
+  @apply mt-1 flex items-center gap-2;
+}
+
+.price {
+  @apply text-sm font-semibold text-neutral-900;
+}
+
+.comparePrice {
+  @apply text-sm text-neutral-400 line-through;
+}
+
+.stars {
+  @apply flex items-center gap-0.5;
+}
+
+.starFilled {
+  @apply h-3.5 w-3.5 fill-amber-400;
+}
+
+.starEmpty {
+  @apply h-3.5 w-3.5 fill-neutral-200;
+}

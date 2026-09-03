@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import styles from "@/styles/components/ProductGallery.module.css";
 
 export default function ProductGallery({
   images,
@@ -14,8 +15,8 @@ export default function ProductGallery({
   const [active, setActive] = useState(0);
 
   return (
-    <div className="space-y-4">
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-100">
+    <div className={styles.wrap}>
+      <div className={styles.mainImageWrap}>
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -23,30 +24,28 @@ export default function ProductGallery({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0"
+            className={styles.mainImageMotion}
           >
             <Image
               src={images[active]}
               alt={name}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className={styles.mainImage}
               priority
             />
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className={styles.thumbGrid}>
         {images.map((img, i) => (
           <button
             key={img + i}
             type="button"
             onClick={() => setActive(i)}
-            className={`relative aspect-square overflow-hidden bg-neutral-100 transition-opacity ${
-              active === i ? "opacity-100 ring-2 ring-neutral-900" : "opacity-70 hover:opacity-100"
-            }`}
+            className={`${styles.thumb} ${active === i ? styles.thumbActive : styles.thumbInactive}`}
           >
-            <Image src={img} alt={`${name} ${i + 1}`} fill sizes="200px" className="object-cover" />
+            <Image src={img} alt={`${name} ${i + 1}`} fill sizes="200px" className={styles.thumbImage} />
           </button>
         ))}
       </div>

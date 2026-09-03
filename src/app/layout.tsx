@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import styles from "@/styles/pages/layout.module.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,12 +32,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${bricolage.variable} ${styles.html}`}
     >
-      <body className="min-h-full flex flex-col bg-white text-neutral-900">
+      <body className={styles.body}>
         <CartProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className={styles.main}>{children}</main>
           <Footer />
         </CartProvider>
       </body>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Product } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
+import styles from "@/styles/components/ProductCard.module.css";
 
 function pseudoRating(slug: string) {
   let hash = 0;
@@ -16,15 +17,11 @@ function pseudoRating(slug: string) {
 
 function Stars({ rating }: { rating: number }) {
   return (
-    <div className="flex items-center gap-0.5" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
+    <div className={styles.stars} aria-label={`${rating.toFixed(1)} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => {
         const filled = i + 1 <= Math.round(rating);
         return (
-          <svg
-            key={i}
-            viewBox="0 0 20 20"
-            className={`h-3.5 w-3.5 ${filled ? "fill-amber-400" : "fill-neutral-200"}`}
-          >
+          <svg key={i} viewBox="0 0 20 20" className={filled ? styles.starFilled : styles.starEmpty}>
             <path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z" />
           </svg>
         );
@@ -45,29 +42,21 @@ export default function ProductCard({ product }: { product: Product }) {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
       className="group"
     >
-      <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-100">
+      <Link href={`/products/${product.slug}`} className={styles.link}>
+        <div className={styles.imageWrap}>
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            className={styles.image}
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className={styles.overlay} />
 
           {(product.isNew || product.compareAtPrice) && (
-            <div className="absolute left-2 top-2 flex gap-2">
-              {product.isNew && (
-                <span className="bg-black px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-                  New
-                </span>
-              )}
-              {product.compareAtPrice && (
-                <span className="bg-red-600 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-                  Sale
-                </span>
-              )}
+            <div className={styles.badges}>
+              {product.isNew && <span className={styles.badgeNew}>New</span>}
+              {product.compareAtPrice && <span className={styles.badgeSale}>Sale</span>}
             </div>
           )}
 
@@ -78,25 +67,21 @@ export default function ProductCard({ product }: { product: Product }) {
               e.stopPropagation();
               addItem(product, product.sizes[0], product.colors[0], 1);
             }}
-            className="absolute inset-x-2 bottom-2 translate-y-4 bg-white/95 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-neutral-900 opacity-0 backdrop-blur transition-all duration-300 hover:bg-white group-hover:translate-y-0 group-hover:opacity-100"
+            className={styles.quickAdd}
           >
             Quick Add
           </button>
         </div>
-        <div className="mt-3">
-          <h3 className="text-sm font-medium text-neutral-900">{product.name}</h3>
-          <div className="mt-1 flex items-center gap-1.5">
+        <div className={styles.info}>
+          <h3 className={styles.name}>{product.name}</h3>
+          <div className={styles.ratingRow}>
             <Stars rating={rating} />
-            <span className="text-xs text-neutral-400">({count})</span>
+            <span className={styles.reviewCount}>({count})</span>
           </div>
-          <div className="mt-1 flex items-center gap-2">
-            <span className="text-sm font-semibold text-neutral-900">
-              ${product.price.toFixed(2)}
-            </span>
+          <div className={styles.priceRow}>
+            <span className={styles.price}>${product.price.toFixed(2)}</span>
             {product.compareAtPrice && (
-              <span className="text-sm text-neutral-400 line-through">
-                ${product.compareAtPrice.toFixed(2)}
-              </span>
+              <span className={styles.comparePrice}>${product.compareAtPrice.toFixed(2)}</span>
             )}
           </div>
         </div>

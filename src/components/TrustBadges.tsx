@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import styles from "@/styles/components/TrustBadges.module.css";
 
 const badges = [
   { icon: "🚚", title: "Free Shipping", desc: "On all orders over $75" },
@@ -9,15 +10,15 @@ const badges = [
 
 export default function TrustBadges() {
   return (
-    <section className="border-y border-neutral-200 bg-neutral-50">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 sm:px-6 lg:grid-cols-4 lg:px-8">
+    <section className={styles.section}>
+      <div className={styles.grid}>
         {badges.map((b, i) => (
           <Reveal key={b.title} delay={i * 0.08} y={12}>
-            <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
-              <span className="text-2xl">{b.icon}</span>
+            <div className={styles.item}>
+              <span className={styles.icon}>{b.icon}</span>
               <div>
-                <p className="text-sm font-semibold text-neutral-900">{b.title}</p>
-                <p className="text-xs text-neutral-500">{b.desc}</p>
+                <p className={styles.title}>{b.title}</p>
+                <p className={styles.desc}>{b.desc}</p>
               </div>
             </div>
           </Reveal>

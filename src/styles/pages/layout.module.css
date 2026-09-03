@@ -1,0 +1,13 @@
+@reference "../../app/globals.css";
+
+.html {
+  @apply h-full antialiased;
+}
+
+.body {
+  @apply flex min-h-full flex-col bg-white text-neutral-900;
+}
+
+.main {
+  @apply flex-1;
+}

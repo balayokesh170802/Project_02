@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import styles from "@/styles/pages/account.module.css";
 
 export const metadata = {
   title: "Account | MASTER Menswear",
@@ -6,10 +7,10 @@ export const metadata = {
 
 export default function AccountPage() {
   return (
-    <div className="mx-auto max-w-md px-4 py-24 text-center sm:px-6 lg:px-8">
+    <div className={styles.wrap}>
       <Reveal>
-        <h1 className="font-display text-3xl tracking-tight">Accounts, Coming Soon</h1>
-        <p className="mt-4 text-neutral-500">
+        <h1 className={styles.heading}>Accounts, Coming Soon</h1>
+        <p className={styles.text}>
           Sign-in and order history aren&apos;t wired up in this demo store
           yet — check back soon.
         </p>

@@ -1,0 +1,123 @@
+@reference "../../app/globals.css";
+
+.emptyWrap {
+  @apply mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 lg:px-8;
+}
+
+.emptyHeading {
+  @apply text-3xl font-bold tracking-tight;
+  font-family: var(--font-display);
+}
+
+.emptyText {
+  @apply mt-4 text-neutral-500;
+}
+
+.emptyCta {
+  @apply mt-8 inline-block bg-neutral-900 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-neutral-700;
+}
+
+.wrap {
+  @apply mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8;
+}
+
+.heading {
+  @apply mb-8 text-3xl font-bold tracking-tight;
+  font-family: var(--font-display);
+}
+
+.layout {
+  @apply grid grid-cols-1 gap-10 lg:grid-cols-3;
+}
+
+.items {
+  @apply space-y-6 lg:col-span-2;
+}
+
+.item {
+  @apply flex gap-4 border-b border-neutral-200 pb-6;
+}
+
+.itemImage {
+  @apply relative h-28 w-24 flex-shrink-0 overflow-hidden bg-neutral-100;
+}
+
+.itemImageEl {
+  @apply object-cover;
+}
+
+.itemBody {
+  @apply flex flex-1 flex-col justify-between;
+}
+
+.itemTop {
+  @apply flex justify-between gap-2;
+}
+
+.itemName {
+  @apply font-medium text-neutral-900 hover:underline;
+}
+
+.itemMeta {
+  @apply mt-1 text-sm text-neutral-500;
+}
+
+.itemPrice {
+  @apply font-semibold;
+}
+
+.itemBottom {
+  @apply flex items-center justify-between;
+}
+
+.quantityRow {
+  @apply flex items-center border border-neutral-300;
+}
+
+.quantityButton {
+  @apply px-3 py-1 text-lg;
+}
+
+.quantityValue {
+  @apply w-8 text-center text-sm;
+}
+
+.removeButton {
+  @apply text-sm text-neutral-500 underline hover:text-neutral-900;
+}
+
+.summary {
+  @apply h-fit border border-neutral-200 p-6;
+}
+
+.summaryTitle {
+  @apply text-lg font-semibold;
+}
+
+.summaryRow {
+  @apply mt-4 flex justify-between text-sm;
+}
+
+.summaryRowTight {
+  @apply mt-2 flex justify-between text-sm;
+}
+
+.summaryLabel {
+  @apply text-neutral-500;
+}
+
+.summaryValue {
+  @apply font-medium;
+}
+
+.summaryTotal {
+  @apply mt-4 flex justify-between border-t border-neutral-200 pt-4 text-base font-semibold;
+}
+
+.checkoutButton {
+  @apply mt-6 block bg-neutral-900 px-6 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white hover:bg-neutral-700;
+}
+
+.continueLink {
+  @apply mt-3 block text-center text-sm text-neutral-500 underline;
+}
