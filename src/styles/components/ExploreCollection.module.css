@@ -1,34 +1,185 @@
 @reference "../../app/globals.css";
 
+/* ===== SECTION — light background, tall for scroll runway ===== */
 .section {
-  @apply bg-[#f5f1ea] py-16 sm:py-20 lg:py-24;
+  @apply relative;
+  height: 300vh;
+  height: 300svh;
+  background: #f5f1ea;
 }
 
-.wrap {
-  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+/* ===== STICKY WRAPPER — light, dark portal grows inside ===== */
+.stickyWrap {
+  @apply sticky top-0 flex w-full items-center justify-center overflow-hidden;
+  height: 100vh;
+  height: 100svh;
+  background: #f5f1ea;
 }
 
-.heading {
-  @apply max-w-md text-4xl font-extrabold leading-[1.05] tracking-tight text-neutral-900 sm:max-w-lg sm:text-5xl lg:text-6xl;
+/* ===== DARK EXPANDING CONTAINER ===== */
+.container {
+  @apply relative h-full w-full overflow-hidden;
+  background: #0a0a0a;
+  transform-origin: center center;
+}
+
+/* ===== GRID OVERLAY ===== */
+.gridOverlay {
+  @apply pointer-events-none absolute inset-0;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* ===== INNER — centers all content ===== */
+.inner {
+  @apply relative flex h-full w-full flex-col items-center justify-center;
+}
+
+/* ===== STAGE 1+2: "NEW COLLECTION" label — centered ===== */
+.label {
+  @apply absolute whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.16em] sm:text-xl sm:tracking-[0.25em] lg:text-2xl;
+  color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-display);
 }
 
-.subtext {
-  @apply mt-4 max-w-md text-neutral-600 sm:mt-5 sm:max-w-lg sm:text-lg;
+/* ===== STAGE 4: Heading + description ===== */
+.textShift {
+  @apply w-full;
 }
 
-.cta {
-  @apply mt-6 inline-flex items-center gap-2 border-b border-neutral-900 pb-1 text-sm font-semibold text-neutral-900 transition-opacity hover:opacity-70 sm:mt-8;
+.textBlock {
+  @apply w-full px-6 text-center sm:px-10;
 }
 
-.arrow {
-  @apply transition-transform duration-300 group-hover:translate-x-1;
+.heading {
+  @apply mx-auto max-w-md text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:max-w-xl sm:text-6xl lg:max-w-3xl lg:text-7xl;
+  font-family: var(--font-display);
 }
 
-.imageWrap {
-  @apply relative mt-10 w-full sm:mt-14 lg:mt-16;
+/* ===== STAGE 5: Product row ===== */
+.productRow {
+  @apply absolute inset-x-0 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2;
+  bottom: 12vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.image {
-  @apply h-auto w-full object-contain;
+.productRow::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  @apply w-[62%] flex-shrink-0 snap-start;
+}
+
+.cardLink {
+  @apply block;
+}
+
+.cardMedia {
+  @apply relative mb-3 aspect-[3/4] w-full overflow-hidden rounded-xl;
+  /* Caps card height on short/landscape viewports so the row never
+     collides with the heading; object-cover absorbs the crop. */
+  max-height: 32vh;
+  background: #161616;
+}
+
+.cardImage {
+  @apply object-cover transition-transform duration-700 group-hover:scale-105;
+}
+
+.cardBadge {
+  @apply absolute left-2 top-2 rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-900;
+  background: rgba(245, 241, 234, 0.92);
+}
+
+.cardCategory {
+  @apply text-[10px] font-medium uppercase tracking-[0.18em];
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.cardName {
+  @apply mt-1 truncate text-sm font-semibold text-white;
+}
+
+.cardPriceRow {
+  @apply mt-1 flex items-baseline gap-2;
+}
+
+.cardPrice {
+  @apply text-sm font-semibold;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cardCompare {
+  @apply text-xs line-through;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+@media (min-width: 640px) {
+  .section {
+    height: 350vh;
+    height: 350svh;
+  }
+
+  .gridOverlay {
+    background-size: 46px 46px;
+  }
+
+  .productRow {
+    @apply gap-4 px-8;
+  }
+
+  .card {
+    @apply w-[38%];
+  }
+}
+
+@media (min-width: 1024px) {
+  /* 5 across, one row, no horizontal scroll */
+  .productRow {
+    @apply mx-auto max-w-[86rem] justify-center gap-5 overflow-visible px-10;
+  }
+
+  .card {
+    @apply w-auto min-w-0 max-w-[15rem] flex-1 flex-shrink;
+  }
+
+  .cardName {
+    @apply text-base;
+  }
+
+  .cardPrice {
+    @apply text-base;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    height: 400vh;
+    height: 400svh;
+  }
+
+  .gridOverlay {
+    background-size: 60px 60px;
+  }
+}
+
+/* Short/landscape viewports: the heading sizes off viewport WIDTH while the
+   vertical budget is height-based, so on a wide-but-short screen the full-size
+   heading collides with the product row. Scale both down. Must stay last so it
+   overrides the width-based heading sizes above. */
+@media (max-height: 740px) {
+  .heading {
+    @apply text-4xl;
+  }
+
+  .cardMedia {
+    max-height: 26vh;
+  }
 }
